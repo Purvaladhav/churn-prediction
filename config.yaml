@@ -1,0 +1,37 @@
+data:
+  path: data/WA_Fn-UseC_-Telco-Customer-Churn.csv
+  test_size: 0.2
+  random_state: 42
+  target_column: Churn
+
+preprocessing:
+  smote: true
+  scale_features: true
+
+models:
+  logistic_regression:
+    max_iter: 1000
+    random_state: 42
+  random_forest:
+    n_estimators: 100
+    random_state: 42
+  xgboost:
+    n_estimators: 100
+    max_depth: 6
+    learning_rate: 0.1
+    eval_metric: logloss
+    random_state: 42
+
+mlflow:
+  experiment_name: churn_prediction
+
+evaluation:
+  threshold: 0.5
+  best_model_path: models/best_model_name.pkl
+
+paths:
+  models_dir: models
+  data_dir: data
+  scaler_path: models/scaler.pkl
+  splits_path: models/data_splits.pkl
+  feature_names_path: models/feature_names.pkl
